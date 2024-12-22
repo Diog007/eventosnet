@@ -43,4 +43,10 @@ public class EventService {
             throw new RuntimeException("Erro ao converter a imagem", e);
         }
     }
+
+    public Event findById(UUID id) {
+        return eventRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Event not found with id: " + id));
+    }
+
 }
