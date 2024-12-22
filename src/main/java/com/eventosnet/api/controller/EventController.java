@@ -3,11 +3,14 @@ package com.eventosnet.api.controller;
 import com.eventosnet.api.domain.event.Event;
 import com.eventosnet.api.domain.event.EventRequestDTO;
 import com.eventosnet.api.domain.event.EventResponseDTO;
+import com.eventosnet.api.domain.event.EventResponsesDTO;
 import com.eventosnet.api.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/event")
@@ -38,6 +41,12 @@ public class EventController {
                 newEvent.getDate()
         );
         return ResponseEntity.ok(responseDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EventResponsesDTO>> getEvents(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        List<EventResponsesDTO> allEvents = eventService.getEvents(page, size);
+        return ResponseEntity.ok(allEvents);
     }
 
 }
