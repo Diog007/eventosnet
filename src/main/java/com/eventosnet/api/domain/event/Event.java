@@ -18,6 +18,7 @@ public class Event {
     private Boolean remote;
     private Date date;
 
+    @Basic(fetch = FetchType.LAZY)
     @Lob
     private byte[] image;
 
