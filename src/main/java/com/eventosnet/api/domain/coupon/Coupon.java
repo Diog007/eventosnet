@@ -22,11 +22,9 @@ public class Coupon {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    // Default constructor
     public Coupon() {
     }
 
-    // Constructor with all fields
     public Coupon(UUID id, String code, Integer discount, Date valid, Event event) {
         this.id = id;
         this.code = code;
@@ -75,7 +73,6 @@ public class Coupon {
         this.event = event;
     }
 
-    // toString method
     @Override
     public String toString() {
         return "Coupon{" +
@@ -87,7 +84,6 @@ public class Coupon {
                 '}';
     }
 
-    // equals and hashCode methods (based on ID)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
