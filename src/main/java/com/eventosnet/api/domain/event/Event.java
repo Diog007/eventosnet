@@ -1,6 +1,8 @@
 package com.eventosnet.api.domain.event;
 
+import com.eventosnet.api.domain.address.Address;
 import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -17,6 +19,9 @@ public class Event {
     private String eventUrl;
     private Boolean remote;
     private Date date;
+
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    private Address address;
 
     @Basic(fetch = FetchType.LAZY)
     @Lob
@@ -91,4 +96,13 @@ public class Event {
     public void setImage(byte[] image) {
         this.image = image;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
 }
